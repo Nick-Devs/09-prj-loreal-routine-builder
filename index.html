@@ -13,6 +13,94 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <!-- Small local styles for selection visuals (keeps beginner-friendly single-file tweak) -->
+    <style>
+      /* Highlight selected product cards */
+      .product-card.selected {
+        border: 2px solid #4f46e5;
+        box-shadow: 0 6px 18px rgba(79, 70, 229, 0.12);
+      }
+
+      /* Card media wrapper for image + info button overlay */
+      .card-media {
+        position: relative;
+        display: block;
+      }
+      .card-media img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 6px 6px 0 0;
+      }
+
+      /* Info button (top-right) */
+      .info-btn {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        border: none;
+        background: rgba(255, 255, 255, 0.95);
+        color: #111827;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      }
+      .info-btn[aria-pressed="true"] {
+        background: #eef2ff;
+        color: #4f46e5;
+      }
+
+      /* Product description shown below product info */
+      .product-desc {
+        margin-top: 8px;
+        color: #374151;
+        font-size: 0.9rem;
+        line-height: 1.25;
+      }
+      .product-desc[hidden] {
+        display: none;
+      }
+
+      /* Selected products list styling */
+      #selectedProductsList {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .selected-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 8px;
+        border-radius: 6px;
+        background: #f8fafc;
+        border: 1px solid #e6eef8;
+      }
+      .selected-name {
+        font-size: 0.95rem;
+        color: #111827;
+        margin-right: 8px;
+      }
+      .remove-btn {
+        background: transparent;
+        border: none;
+        color: #ef4444;
+        font-size: 1.1rem;
+        cursor: pointer;
+      }
+      .placeholder-message {
+        color: #6b7280;
+        font-style: italic;
+        padding: 12px;
+      }
+    </style>
   </head>
 
   <body>
@@ -48,6 +136,18 @@
         <div id="selectedProductsList"></div>
         <button id="generateRoutine" class="generate-btn">
           <i class="fa-solid fa-wand-magic-sparkles"></i> Generate Routine
+        </button>
+        <button
+          id="clearSelections"
+          class="generate-btn"
+          style="
+            margin-top: 8px;
+            background: #fff;
+            color: #000;
+            border: 2px solid #000;
+          "
+        >
+          Clear All Selections
         </button>
       </div>
 
